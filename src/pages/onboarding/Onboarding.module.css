@@ -1,0 +1,290 @@
+.page {
+  min-height: 100vh;
+  background-color: #0e0e0e;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background-color: #0e0e0e;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e8440a;
+}
+
+.navCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  border-radius: 50px;
+  padding: 10px 20px;
+  width: 400px;
+  border: 1px solid #333;
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 14px;
+}
+
+.searchInput::placeholder {
+  color: #666;
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navDivider {
+  width: 1px;
+  height: 24px;
+  background-color: #333;
+}
+
+.navName {
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+}
+
+.navAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #444;
+  border: 2px solid #555;
+}
+
+/* Main Content */
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding: 32px;
+  gap: 32px;
+}
+
+/* Left Panel */
+.leftPanel {
+  width: 35%;
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+}
+
+.progressSection {
+  margin-bottom: 32px;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.progressLabel {
+  font-size: 14px;
+  color: #e8440a;
+  font-weight: 600;
+}
+
+.progressPercentage {
+  font-size: 14px;
+  color: #e8440a;
+  font-weight: 600;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background-color: #333;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #e8440a;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.heading {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 40px;
+  line-height: 1.2;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: auto;
+}
+
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.stepCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.activeStep {
+  background-color: #e8440a;
+  border: 2px solid #e8440a;
+}
+
+.completedStep {
+  background-color: transparent;
+  border: 2px solid #22c55e;
+}
+
+.inactiveStep {
+  background-color: #333;
+  border: 2px solid #333;
+}
+
+.stepNumber {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.tickIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 6px;
+}
+
+.stepTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.stepSubtitle {
+  font-size: 13px;
+  color: #888;
+}
+
+.stepLine {
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  width: 2px;
+  height: calc(100% + 8px);
+  background-color: #333;
+  z-index: 0;
+}
+
+.helpSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid #333;
+}
+
+.helpText {
+  font-size: 14px;
+  color: #888;
+}
+
+.contactBtn {
+  background-color: #1a1a1a;
+  border: 1px solid #e8440a;
+  color: #e8440a;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contactBtn:hover {
+  background-color: #e8440a;
+  color: white;
+}
+
+/* Right Panel */
+.rightPanel {
+  width: 65%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}

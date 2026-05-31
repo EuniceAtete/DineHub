@@ -1,0 +1,244 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #e8440a;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.tabBar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activeTab {
+  background-color: #e8440a;
+  color: #ffffff;
+  border: 1px solid #e8440a;
+}
+
+.inactiveTab {
+  background-color: #121212;
+  color: #888888;
+  border: 1px solid #333333;
+}
+
+.inactiveTab:hover {
+  border-color: #e8440a;
+  color: #ffffff;
+}
+
+.row {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.formCol {
+  flex: 1.2;
+}
+
+.imageCol {
+  flex: 0.8;
+  position: relative;
+  min-height: 250px;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.coffeeImage {
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  top: -60px;
+  right: -20px;
+  animation: floatCoffee 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.7));
+  pointer-events: none;
+  z-index: 10;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a0a0a0;
+}
+
+.input {
+  background-color: #252525;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #ffffff;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: #e8440a;
+  outline: none;
+  background-color: #2a2a2a;
+}
+
+.uploadWrapper {
+  display: flex;
+  align-items: center;
+  background-color: #252525;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.uploadWrapper:hover {
+  border-color: #e8440a;
+  background-color: #2a2a2a;
+}
+
+.uploadInput {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  padding: 12px 16px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+}
+
+.uploadInput::placeholder {
+  color: #666666;
+}
+
+.uploadIconBox {
+  padding-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemCountIndicator {
+  font-size: 12px;
+  color: #666666;
+  margin-top: 2px;
+}
+
+.addItemBtn {
+  background-color: #e8440a;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 12px;
+}
+
+.addItemBtn:hover {
+  background-color: #d13c08;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(232, 68, 10, 0.3);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 36px;
+  border-top: 1px solid #232323;
+  padding-top: 24px;
+}
+
+.finishBtn {
+  background-color: #22c55e;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.finishBtn:hover {
+  background-color: #1ea34d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.3);
+}
+
+.btnArrow {
+  transition: transform 0.2s ease;
+}
+
+.addItemBtn:hover .btnArrow, .finishBtn:hover .btnArrow {
+  transform: translateX(4px);
+}
+
+@keyframes floatCoffee {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@media (max-width: 992px) {
+  .row {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .imageCol {
+    width: 100%;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .coffeeImage {
+    position: static;
+    margin: 0 auto;
+    width: 160px;
+  }
+}

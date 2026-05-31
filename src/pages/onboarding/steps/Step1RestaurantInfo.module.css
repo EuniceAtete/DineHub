@@ -1,0 +1,148 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #e8440a;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sectionSubtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #e8440a;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a0a0a0;
+}
+
+.input {
+  background-color: #252525;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #ffffff;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: #e8440a;
+  outline: none;
+  background-color: #2a2a2a;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.col {
+  flex: 1;
+  min-width: 0;
+}
+
+.phoneInputWrapper {
+  display: flex;
+  align-items: center;
+  background-color: #252525;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.phoneInputWrapper:focus-within {
+  border-color: #e8440a;
+  background-color: #2a2a2a;
+}
+
+.phonePrefix {
+  font-size: 14px;
+  color: #888888;
+  padding-left: 16px;
+  user-select: none;
+}
+
+.phoneDivider {
+  width: 1px;
+  height: 18px;
+  background-color: #333333;
+  margin: 0 12px;
+}
+
+.phoneInput {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  padding: 12px 16px 12px 0;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+.nextBtn {
+  background-color: #e8440a;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nextBtn:hover {
+  background-color: #d13c08;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(232, 68, 10, 0.3);
+}
+
+.btnArrow {
+  transition: transform 0.2s ease;
+}
+
+.nextBtn:hover .btnArrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
