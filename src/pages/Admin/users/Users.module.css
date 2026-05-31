@@ -1,0 +1,161 @@
+.page {
+  position: relative;
+  min-height: calc(100vh - 120px);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.pageHeading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.findUser {
+  padding: 10px 20px;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 999px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  min-width: 200px;
+  outline: none;
+}
+
+.findUser::placeholder {
+  color: #666666;
+}
+
+.subHeading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.tableCard {
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #252525;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 16px 24px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #888888;
+  border-bottom: 1px solid #252525;
+}
+
+.table td {
+  padding: 18px 24px;
+  border-bottom: 1px solid #252525;
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.userName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.userUpdated {
+  font-size: 12px;
+  color: #888888;
+}
+
+.badgeHq {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #e8440a;
+}
+
+.badgeBranch {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #444444;
+  background: #252525;
+}
+
+.role {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.reportsCell {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.eyeBtn {
+  color: #e8440a;
+  display: flex;
+  padding: 4px;
+}
+
+.menuBtn {
+  color: #888888;
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding: 4px 8px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  font-size: 14px;
+  color: #888888;
+}
+
+.pageArrows {
+  display: flex;
+  gap: 8px;
+}
+
+.pageArrow {
+  color: #e8440a;
+  font-size: 18px;
+  padding: 4px 8px;
+}
+
+.herbsPlaceholder {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 120px;
+  min-width: 120px;
+  min-height: 120px;
+  height: 120px;
+  pointer-events: none;
+}

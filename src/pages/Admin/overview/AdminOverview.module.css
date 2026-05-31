@@ -1,0 +1,267 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.statsRow {
+  display: flex;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.statCard {
+  flex: 1;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1.5px solid transparent;
+}
+
+.statCardActive {
+  border-color: #e8440a;
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.statLabel {
+  color: #e8440a;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+.statValue {
+  color: #ffffff;
+  font-size: 36px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  margin-top: 8px;
+  line-height: 1.1;
+}
+
+.middleRow {
+  display: flex;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+
+.trendsCard {
+  flex: 0 0 62%;
+  min-width: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px 12px;
+}
+
+.trendsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+.trendsTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.chartTabs {
+  display: flex;
+  gap: 6px;
+}
+
+.chartTab {
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  color: #888888;
+  background: #252525;
+  border: none;
+  cursor: pointer;
+}
+
+.chartTabActive {
+  background: #e8440a;
+  color: #ffffff;
+}
+
+.chartArea {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.businessCard {
+  flex: 1;
+  min-width: 0;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.businessTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.businessList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.businessRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.businessLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #888888;
+}
+
+.dotOrange {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e8440a;
+  flex-shrink: 0;
+}
+
+.dotGrey {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #444444;
+  flex-shrink: 0;
+}
+
+.businessAmount {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.recentCard {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 14px 20px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.recentTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #e8440a;
+  margin-bottom: 12px;
+}
+
+.recentRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 72%;
+}
+
+.recentRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.clientName {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.clientUpdated {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #888888;
+}
+
+.badgeResto {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e8440a;
+  text-transform: uppercase;
+}
+
+.badgePill {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #444444;
+  background: #252525;
+}
+
+.clientRevenue {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.lobsterImg {
+  position: absolute;
+  height: 180px;
+  width: auto;
+  bottom: -10px;
+  right: 20px;
+  object-fit: contain;
+  pointer-events: none;
+}

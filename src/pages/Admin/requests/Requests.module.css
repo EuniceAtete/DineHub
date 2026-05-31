@@ -1,0 +1,184 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pageHeading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+}
+
+.filterTab {
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #888888;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.filterTabActive {
+  background: #e8440a;
+  color: #ffffff;
+}
+
+.contentRow {
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.requestsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.requestCard {
+  background: #1a1a1a;
+  border: 1px solid #252525;
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.requestLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.requestMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.requestLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8440a;
+}
+
+.statusBadge {
+  font-size: 11px;
+  color: #888888;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #252525;
+}
+
+.requestTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.restaurantName {
+  font-size: 14px;
+  color: #e8440a;
+}
+
+.requestRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+  border-left: 1px solid #333333;
+}
+
+.warningIcon {
+  color: #e8440a;
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.warningSpacer {
+  width: 24px;
+}
+
+.detailBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detailLabel {
+  font-size: 11px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detailValue {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.statsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #252525;
+  min-height: 320px;
+}
+
+.statBlock {
+  text-align: center;
+}
+
+.statNumber {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #888888;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #888888;
+}
+
+.pageArrows {
+  display: flex;
+  gap: 8px;
+}
+
+.pageArrow {
+  color: #e8440a;
+  font-size: 18px;
+  padding: 4px 8px;
+}
