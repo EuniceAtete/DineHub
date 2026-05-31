@@ -1,0 +1,109 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 24px;
+}
+
+.chartCardWrap {
+  position: relative;
+  padding-top: 14px;
+}
+
+.pillLabel {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  z-index: 2;
+  padding: 6px 20px;
+  background: #e8440a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+}
+
+.chartCard {
+  background: #1a1a1a;
+  border: 1px solid #252525;
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 220px;
+}
+
+.pieWrap {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--dot-color);
+}
+
+.legendLabel {
+  color: #ffffff;
+}
+
+.legendLabelMuted {
+  color: #888888;
+}
+
+.legendLabelBold {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  font-size: 14px;
+  color: #888888;
+}
+
+.pageArrows {
+  display: flex;
+  gap: 8px;
+}
+
+.pageArrow {
+  color: #e8440a;
+  font-size: 18px;
+  padding: 4px 8px;
+}
