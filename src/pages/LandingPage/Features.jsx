@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Features.module.css";
 import whiteStrokeImg from "../../assets/Landing/white stroke.png";
 import spaghettiImg from "../../assets/Landing/spaghetti.png";
 
 function Features() {
-  const [activeFeature, setActiveFeature] = useState(0);
+  const [activeFeature, setActiveFeature] = useState(null);
 
   const featureList = [
     {
       title: "Digital Store Management",
+      detail: "Keep restaurant details, hours, tables, and operations organized from one dashboard.",
       icon: (
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="3" width="7" height="9" />
@@ -20,6 +21,7 @@ function Features() {
     },
     {
       title: "Create Your Digital Menu",
+      detail: "Build categories, update items, and publish menu changes without slowing service down.",
       icon: (
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
@@ -28,6 +30,7 @@ function Features() {
     },
     {
       title: "Real-time Order Tracking",
+      detail: "Follow order status live so kitchen, floor, and pickup workflows stay aligned.",
       icon: (
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="9" cy="21" r="1" />
@@ -38,6 +41,7 @@ function Features() {
     },
     {
       title: "Revenue & Analytics",
+      detail: "Monitor performance trends and spot the menu or sales patterns that need attention.",
       icon: (
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="18" y1="20" x2="18" y2="10" />
@@ -51,31 +55,36 @@ function Features() {
   return (
     <section id="features" className={styles.section}>
       <div className={styles.container}>
+        <div className={styles.header}>
+          {/* Header Badge with white stroke behind it */}
+          <div className={styles.badgeWrapper}>
+            <img src={whiteStrokeImg} alt="" className={styles.badgeStroke} />
+            <span className={styles.badgeText}>FEATURES</span>
+          </div>
+
+          <h2 className={styles.title}>Everything you need to run smarter.</h2>
+          <p className={styles.description}>
+            From menu creation to order management, DineHub gives you every tool in one place.
+          </p>
+        </div>
+
         <div className={styles.grid}>
           
           <div className={styles.contentCol}>
-            {/* Header Badge with white stroke behind it */}
-            <div className={styles.badgeWrapper}>
-              <img src={whiteStrokeImg} alt="" className={styles.badgeStroke} />
-              <span className={styles.badgeText}>FEATURES</span>
-            </div>
-
-            <h2 className={styles.title}>Everything you need to run smarter.</h2>
-            <p className={styles.description}>
-              Take your restaurant management to the next level with our advanced tools. 
-              Configure menus, receive digital payments, and track table metrics live.
-            </p>
-
             <div className={styles.featuresList}>
               {featureList.map((item, idx) => (
                 <div 
                   key={idx} 
                   className={`${styles.featureItem} ${activeFeature === idx ? styles.active : ""}`}
                   onMouseEnter={() => setActiveFeature(idx)}
+                  onMouseLeave={() => setActiveFeature(null)}
                 >
                   <div className={styles.featureItemLeft}>
                     <div className={styles.iconBox}>{item.icon}</div>
-                    <span className={styles.featureTitle}>{item.title}</span>
+                    <div className={styles.featureCopy}>
+                      <span className={styles.featureTitle}>{item.title}</span>
+                      <p className={styles.featureDetail}>{item.detail}</p>
+                    </div>
                   </div>
                   <div className={styles.arrowBox}>
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

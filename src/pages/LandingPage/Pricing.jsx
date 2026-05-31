@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Pricing.module.css";
 
 function Pricing() {
@@ -18,7 +17,7 @@ function Pricing() {
     },
     {
       name: "Pro",
-      price: "29K RWT/month",
+      price: "29K RWF/month",
       description: "For growing restaurants",
       features: [
         "Unlimited Transactions",

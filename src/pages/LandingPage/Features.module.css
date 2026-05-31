@@ -12,6 +12,15 @@
   padding: 0 24px;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 52px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -46,9 +55,9 @@
 
 .badgeText {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
-  color: #0b0b0b;
+  color: var(--color-primary);
   position: relative;
   z-index: 2;
   letter-spacing: 2px;
@@ -56,7 +65,7 @@
 
 .title {
   font-family: var(--font-headings);
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.2;
   color: var(--color-text-white);
@@ -65,10 +74,10 @@
 
 .description {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 12px;
   color: var(--color-text-muted);
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   max-width: 500px;
 }
 
@@ -83,7 +92,7 @@
 .featureItem {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 18px 24px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
@@ -94,20 +103,27 @@
 
 .featureItemLeft {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
+  text-align: left;
 }
 
 .iconBox {
   width: 42px;
   height: 42px;
   border-radius: 10px;
-  background: rgba(224, 90, 22, 0.1);
+  background: rgba(232, 68, 10, 0.1);
   color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition-smooth);
+}
+
+.featureCopy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .featureTitle {
@@ -116,6 +132,18 @@
   font-weight: 600;
   color: var(--color-text-muted);
   transition: var(--transition-smooth);
+}
+
+.featureDetail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.35s ease, margin-top 0.35s ease;
 }
 
 .arrowBox {
@@ -129,8 +157,8 @@
 
 /* Hover / Active interaction styling */
 .featureItem:hover, .active {
-  background: rgba(224, 90, 22, 0.05);
-  border-color: rgba(224, 90, 22, 0.3);
+  background: rgba(232, 68, 10, 0.05);
+  border-color: rgba(232, 68, 10, 0.3);
 }
 
 .featureItem:hover .featureTitle, .active .featureTitle {
@@ -148,6 +176,13 @@
   transform: translateX(0);
 }
 
+.featureItem:hover .featureDetail, .active .featureDetail {
+  max-height: 72px;
+  opacity: 1;
+  margin-top: 8px;
+  transform: translateY(0);
+}
+
 .getStartedBtn {
   background: var(--color-text-white);
   color: var(--color-primary);
@@ -162,7 +197,7 @@
   background: var(--color-primary);
   color: var(--color-text-white);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(224, 90, 22, 0.3);
+  box-shadow: 0 8px 25px rgba(232, 68, 10, 0.3);
 }
 
 .imageCol {
@@ -174,7 +209,7 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  max-width: 480px;
+  max-width: 405px;
   display: flex;
   justify-content: center;
 }
@@ -187,9 +222,9 @@
 }
 
 @keyframes floatImage {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(2deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
+  0% { transform: translateY(20px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(2deg); }
+  100% { transform: translateY(20px) rotate(0deg); }
 }
 
 @media (max-width: 992px) {
@@ -211,7 +246,7 @@
   }
 
   .imageWrapper {
-    max-width: 380px;
+    max-width: 320px;
   }
 }
 

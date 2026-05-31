@@ -16,9 +16,9 @@
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width: none;
+  margin: 0;
+  padding: 0 clamp(30px, 3vw, 45px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,7 +52,8 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 20px;
+  margin-left: 500px;
 }
 
 .navLink {
@@ -70,10 +71,33 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  margin-left: 12px;
+}
+
+.signUpBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 8px;
+  transition: var(--transition-smooth);
+}
+
+.signUpBtn:hover {
+  color: var(--color-text-white);
 }
 
 .signInBtn {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  text-decoration: none;
+  display: inline-block;
   background: var(--color-primary);
   color: var(--color-text-white);
   padding: 10px 24px;
@@ -86,7 +110,7 @@
 .signInBtn:hover {
   background: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(224, 90, 22, 0.3);
+  box-shadow: 0 6px 20px rgba(232, 68, 10, 0.3);
 }
 
 .mobileMenuToggle {

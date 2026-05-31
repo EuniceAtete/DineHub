@@ -1,18 +1,17 @@
 .hero {
   position: relative;
   background-color: var(--color-bg);
-  min-height: 95vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 100px;
   overflow: hidden;
 }
 
 .spicesLeft {
   position: absolute;
   left: 0;
-  top: 15%;
+  top: calc(15% - 50px);
   height: 350px;
   width: auto;
   pointer-events: none;
@@ -22,10 +21,11 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: none;
   width: 100%;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
+  height: 100%;
+  margin: 0;
+  padding: 92px 0 74px clamp(30px, 3vw, 45px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@
 }
 
 .content {
-  flex: 1;
+  flex: 0 0 min(44vw, 540px);
   max-width: 540px;
 }
 
@@ -89,6 +89,11 @@
 }
 
 .primaryBtn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  text-decoration: none;
   background: var(--color-primary);
   color: var(--color-text-white);
   padding: 14px 28px;
@@ -101,10 +106,15 @@
 .primaryBtn:hover {
   background: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(224, 90, 22, 0.35);
+  box-shadow: 0 6px 20px rgba(232, 68, 10, 0.35);
 }
 
 .secondaryBtn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  text-decoration: none;
   background: transparent;
   color: var(--color-text-white);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -122,21 +132,24 @@
 }
 
 .imageContainer {
-  flex: 1;
-  position: relative;
+  position: absolute;
+  inset: 0 0 64px auto;
+  width: 63vw;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-left: 40px;
+  padding-left: 0;
+  pointer-events: none;
 }
 
 .herbsBackground {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 110%;
-  max-width: 600px;
+  top: 48%;
+  left: -6%;
+  transform: translateY(-50%);
+  width: 36vw;
+  max-width: 460px;
+  min-width: 260px;
   height: auto;
   pointer-events: none;
   opacity: 0.9;
@@ -146,9 +159,10 @@
 .steakWrapper {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 500px;
-  animation: float 6s ease-in-out infinite;
+  width: min(70vw, 860px);
+  max-width: none;
+  margin-right: -175px;
+  /* animation: float 6s ease-in-out infinite; */
 }
 
 .steakImage {
@@ -161,18 +175,21 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
   position: absolute;
-  bottom: -2px; /* Slight overlap to prevent 1px gap */
+  bottom: 0;
   left: 0;
   z-index: 5;
   gap: 0;
   overflow: hidden;
+  height: 78px;
+  align-items: flex-end;
 }
 
 .brushstroke {
-  width: calc(100vw / 3);
-  height: auto;
+  flex: 0 0 calc(100vw / 12 + 2px);
+  width: calc(100vw / 12 + 2px);
+  height: 78px;
+  margin-right: -1px;
   object-fit: cover;
   pointer-events: none;
 }
@@ -186,7 +203,7 @@
 @media (max-width: 992px) {
   .container {
     flex-direction: column;
-    padding-bottom: 120px;
+    padding: 92px 30px 84px;
     gap: 60px;
   }
 
@@ -207,13 +224,21 @@
   }
 
   .imageContainer {
+    position: relative;
+    inset: auto;
     width: 100%;
     justify-content: center;
     padding-left: 0;
   }
 
+  .herbsBackground {
+    left: 10%;
+    width: 50vw;
+  }
+
   .steakWrapper {
-    max-width: 400px;
+    width: min(76vw, 455px);
+    margin-right: 0;
   }
 }
 

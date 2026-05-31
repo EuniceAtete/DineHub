@@ -7,18 +7,22 @@
 
 .strokeContainer {
   position: absolute;
-  top: 15%;
-  left: 0;
-  width: 100%;
-  height: 70%;
+  top: 31%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 390px;
   z-index: 1;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .whiteStrokeBg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .dashboardImage {
@@ -34,12 +38,13 @@
 
 .shrimpsImage {
   position: absolute;
-  right: -30px;
-  top: 60px;
-  width: 280px;
+  top: -92px;
+  right: clamp(24px, 7vw, 120px);
+  width: 185px;
   height: auto;
-  z-index: 3;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.45));
 }
 
 .container {
@@ -53,7 +58,9 @@
 .header {
   text-align: center;
   max-width: 600px;
-  margin: 0 auto 64px;
+  margin: 0 auto 76px;
+  position: relative;
+  z-index: 4;
 }
 
 .subtitle {
@@ -62,47 +69,51 @@
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   margin-bottom: 12px;
   display: inline-block;
 }
 
 .title {
   font-family: var(--font-headings);
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.2;
-  color: #0b0b0b; /* Stand out on the white stroke background */
+  color: var(--color-text-white);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, 326px);
+  justify-content: center;
+  gap: 58px;
+  position: relative;
+  z-index: 3;
+}
+
+.cardShell {
+  position: relative;
 }
 
 .card {
   background: #111111;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 40px 30px;
+  border-radius: 16px;
+  width: 326px;
+  height: 320px;
+  padding: 34px 28px 28px;
   transition: var(--transition-smooth);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .card:hover {
   transform: translateY(-8px);
   border-color: var(--color-primary);
-  box-shadow: 0 20px 45px rgba(224, 90, 22, 0.15);
-}
-
-.cardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
+  box-shadow: 0 20px 45px rgba(232, 68, 10, 0.15);
 }
 
 .cardNumber {
@@ -110,13 +121,22 @@
   font-size: 18px;
   font-weight: 700;
   color: var(--color-primary);
+  margin-bottom: 22px;
 }
 
 .iconWrapper {
-  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 82px;
+  height: 82px;
+  margin-bottom: 24px;
+}
+
+.stepIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .cardTitle {
@@ -124,12 +144,12 @@
   font-size: 24px;
   font-weight: 600;
   color: var(--color-text-white);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .cardDescription {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-muted);
   line-height: 1.6;
 }
@@ -137,18 +157,19 @@
 @media (max-width: 992px) {
   .grid {
     grid-template-columns: 1fr;
-    max-width: 480px;
+    max-width: 326px;
     margin: 0 auto;
-  }
-
-  .shrimpsImage {
-    width: 200px;
-    top: 20px;
   }
 
   .dashboardImage {
     width: 180px;
     bottom: 20px;
+  }
+
+  .shrimpsImage {
+    width: 150px;
+    top: -64px;
+    right: 24px;
   }
 }
 
@@ -161,12 +182,12 @@
     font-size: 36px;
   }
 
-  .shrimpsImage, .dashboardImage {
+  .dashboardImage, .shrimpsImage {
     display: none; /* Hide decorative floating elements on mobile to prevent clutter */
   }
 
   .strokeContainer {
-    top: 5%;
-    height: 90%;
+    top: 16%;
+    height: 80%;
   }
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ContactUs.module.css";
 import martiniImg from "../../assets/Landing/martini.png";
 import logoImg from "../../assets/Landing/DineHub Logo.png";
@@ -123,7 +122,7 @@ function ContactUs() {
           </div>
 
           <p className={styles.copyright}>
-            &copy; 2026 DineHub. All rights reserved. Made with <span className={styles.heart}>💚</span>
+            &copy; 2026 DineHub. All rights reserved. Made with <span className={styles.heart}>🤍</span>
           </p>
         </div>
       </div>
