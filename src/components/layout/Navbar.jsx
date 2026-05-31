@@ -1,4 +1,4 @@
-import "layout_styles/navbar.css";
+import "../layout_styles/navbar.css";
 
 function Navbar() {
   return (
@@ -16,9 +16,7 @@ function Navbar() {
         <li><a href="#">Contact</a></li>
       </ul>
 
-      <button className="login-btn">
-        Login →
-      </button>
+      <button className="login-btn">Login →</button>
     </nav>
   );
 }

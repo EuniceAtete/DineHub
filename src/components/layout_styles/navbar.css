@@ -1,74 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .navbar {
-  width: 100%;
-  height: 80px;
-
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  padding: 0 60px;
-
-  background-color: #050505;
+  background-color: #070707;
+  display: flex;
+  font-family: 'Inter', Arial, sans-serif;
+  height: 80px;
+  padding: 0 58px 0 116px;
+  width: 100%;
 }
 
 .logo {
-  font-size: 2rem;
-  font-weight: 700;
   cursor: pointer;
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1;
 }
 
 .logo-white {
-  color: white;
+  color: #ffffff;
 }
 
 .logo-orange {
-  color: #ff5c00;
+  color: #E8440A;
 }
 
 .nav-links {
   display: flex;
-  gap: 50px;
-
+  gap: 58px;
   list-style: none;
+  margin-left: auto;
+  margin-right: 75px;
 }
 
 .nav-links a {
+  color: #cfcfcf;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
   text-decoration: none;
-  color: white;
-
-  font-size: 1rem;
-  transition: 0.3s ease;
+  transition: color 0.25s ease;
 }
 
 .nav-links a:hover {
-  color: #ff5c00;
+  color: #ffffff;
 }
 
 .login-btn {
+  background: #E8440A;
   border: none;
-  outline: none;
-
-  background: #ff5c00;
-  color: white;
-
-  padding: 12px 28px;
-
   border-radius: 999px;
-
-  font-size: 1rem;
-  font-weight: 600;
-
+  color: #ffffff;
   cursor: pointer;
-
-  transition: 0.3s ease;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  height: 36px;
+  line-height: 1;
+  min-width: 120px;
+  outline: none;
+  padding: 0 22px;
+  transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .login-btn:hover {
-  opacity: 0.85;
+  background: #ff5a1f;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    height: auto;
+    padding: 24px 28px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .login-btn {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .logo {
+    font-size: 25px;
+  }
+
+  .login-btn {
+    min-width: 104px;
+  }
 }
