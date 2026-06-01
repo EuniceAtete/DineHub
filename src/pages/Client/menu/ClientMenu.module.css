@@ -70,13 +70,14 @@
   padding: 16px 20px;
 }
 
-.imagePlaceholder {
+/* ── Real image replacing the grey placeholder ── */
+.itemImage {
   width: 60px;
   height: 60px;
   min-width: 60px;
   min-height: 60px;
-  background: #333333;
   border-radius: 8px;
+  object-fit: cover;
   flex-shrink: 0;
 }
 
@@ -185,15 +186,6 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-.radioDot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid #444444;
-  flex-shrink: 0;
-  display: inline-block;
 }
 
 .radioDotOrange {

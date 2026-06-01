@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import styles from './ClientMenu.module.css';
+import lavaCakeImg from '../../../assets/Overview/lava-cake.png';
+import cheesecakeImg from '../../../assets/Overview/cheesecake.png';
+import mangoCottaImg from '../../../assets/Overview/mango-cotta.png';
+import beignetsImg from '../../../assets/Overview/beignets.png';
 
 const CATEGORIES = ['Drink', 'Appetizer', 'Main Course', 'Dessert'];
 
@@ -8,28 +12,32 @@ const MENU_ITEMS = [
     ingredients: 'Dark Chocolate, Butter, Eggs, Sugar',
     name: 'Chocolate Lava Cake – 1 piece',
     price: 'Frw 4,500',
+    image: lavaCakeImg,
   },
   {
     ingredients: 'Cream Cheese, Passion Fruit, Biscuit Base',
     name: 'Passion Fruit Cheesecake – 1 slice',
     price: 'Frw 3,800',
+    image: cheesecakeImg,
   },
   {
     ingredients: 'Mango, Cream, Vanilla, Agar',
     name: 'Mango Panna Cotta',
     price: 'Frw 3,500',
+    image: mangoCottaImg,
   },
   {
     ingredients: 'Ripe Banana, Cinnamon, Powdered Sugar',
     name: 'Banana Beignets',
     price: 'Frw 2,000',
+    image: beignetsImg,
   },
 ];
 
 const APPLIES_TO = [
-  { id: 'restaurants', label: 'Restaurants', selected: true },
-  { id: 'hotels', label: 'Hotels', selected: false },
-  { id: 'pubs', label: 'Pubs', selected: false },
+  { id: 'restaurants', label: 'Restaurants' },
+  { id: 'hotels',      label: 'Hotels'       },
+  { id: 'pubs',        label: 'Pubs'         },
 ];
 
 function ClientMenu() {
@@ -60,7 +68,11 @@ function ClientMenu() {
         <div className={styles.menuList}>
           {MENU_ITEMS.map((item) => (
             <article key={item.name} className={styles.menuItemCard}>
-              <div className={styles.imagePlaceholder} aria-hidden="true" />
+              <img
+                src={item.image}
+                alt={item.name}
+                className={styles.itemImage}
+              />
               <div className={styles.itemDetails}>
                 <span className={styles.ingredients}>{item.ingredients}</span>
                 <span className={styles.itemName}>{item.name}</span>
