@@ -1,58 +1,56 @@
 import { useState } from 'react';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
-} from 'recharts';
 import styles from './ClientOverview.module.css';
+import customersIcon from '../../../assets/Overview/clients.png';
+import revenueIcon from '../../../assets/Overview/revenue.png';
+import ordersIcon from '../../../assets/Overview/orders.png';
+import shrimpsImg from '../../../assets/Overview/shrimps.png';
 
 const STATS = [
-  { label: 'Total Customer', value: '143', active: true },
-  { label: 'Total Revenue', value: '5,041,800' },
-  { label: 'Total Orders', value: '2,347' },
+  { label: 'Total Customer', value: '143', icon: customersIcon, active: true },
+  { label: 'Total Revenue',  value: '5,041,800', icon: revenueIcon },
+  { label: 'Total Orders',   value: '2,347', icon: ordersIcon },
 ];
 
-const CHART_DATA = [
-  { time: '8am', value: 12000, active: false },
-  { time: '9am', value: 18000, active: false },
-  { time: '10am', value: 22000, active: true },
-  { time: '11am', value: 28000, active: true },
-  { time: '12pm', value: 30000, active: true },
-  { time: '1pm', value: 25000, active: false },
-  { time: '2pm', value: 20000, active: false },
-  { time: '3pm', value: 15000, active: false },
+const TREND_DATA = [
+  { time: '8am',  value: 20000 },
+  { time: '9am',  value: 11000 },
+  { time: '10am', value: 30000 },
+  { time: '11am', value: 25000 },
+  { time: '12am', value: 27000 },
+  { time: '1pm',  value: 29000 },
+  { time: '2pm',  value: 10000 },
+  { time: '3pm',  value: 13000 },
 ];
 
-const SOLD_FOOD = [
-  { label: 'Burgers', amount: '3,041,000', dot: 'orange' },
-  { label: 'Icecream', amount: '1,800,800', dot: 'grey' },
-  { label: 'Drinks', amount: '200,000', dot: 'grey' },
+const HIGHLIGHT_TIMES = new Set(['8am', '10am', '1pm']);
+
+const BY_SOLD_FOOD = [
+  { label: 'Burgers',  amount: '3,041,000', dot: 'orange' },
+  { label: 'Icecream', amount: '1,800,800', dot: 'grey'   },
+  { label: 'Drinks',   amount: '200,000',   dot: 'grey'   },
 ];
 
 const RECENT_ORDERS = [
-  { name: 'Vanilla + Chocolate Icecream', updated: 'Updated 1 sec ago', category: 'DESSERT', price: '14,000 RWF' },
-  { name: 'Cheese Burger and Fries', updated: 'Updated 30 secs ago', category: 'MC', price: '20,000 RWF' },
-  { name: 'Apple Juice', updated: 'Updated 2 mins ago', category: 'Drink', price: '3,000 RWF' },
+  { name: 'Vanilla + Chocolate Icecream', updated: 'Updated 1 sec ago',   category: 'DESSERT', revenue: '14,000 RWF' },
+  { name: 'Cheese Burger and Fries',      updated: 'Updated 30 secs ago', category: 'MC',      revenue: '20,000 RWF' },
+  { name: 'Apple Juice',                  updated: 'Updated 2 mins ago',  category: 'Drink',   revenue: '3,000 RWF'  },
 ];
 
-function StatIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.statIcon}>
-      <path d="M3 3v18h18" />
-      <path d="M7 16l4-8 4 5 5-9" />
-    </svg>
-  );
-}
-
 function CategoryBadge({ category }) {
-  if (category === 'DESSERT') return <span className={styles.badgeDessert}>{category}</span>;
-  if (category === 'MC') return <span className={styles.badgeMc}>{category}</span>;
-  return <span className={styles.badgeDrink}>{category}</span>;
+  const colorMap = {
+    DESSERT: { background: '#1a4a4a', color: '#4ecdc4' },
+    MC:      { background: '#1a3a1a', color: '#4ade80' },
+    Drink:   { background: '#1a1a3a', color: '#818cf8' },
+  };
+  const style = colorMap[category] || { background: '#252525', color: '#ffffff' };
+  return (
+    <span
+      className={styles.badge}
+      style={{ background: style.background, color: style.color }}
+    >
+      {category}
+    </span>
+  );
 }
 
 function ClientOverview() {
@@ -60,6 +58,8 @@ function ClientOverview() {
 
   return (
     <div className={styles.page}>
+
+      {/* ── Stat Cards ── */}
       <div className={styles.statsRow}>
         {STATS.map((stat) => (
           <div
@@ -67,18 +67,21 @@ function ClientOverview() {
             className={`${styles.statCard} ${stat.active ? styles.statCardActive : ''}`}
           >
             <div className={styles.statHeader}>
-              <StatIcon />
-              <span>{stat.label}</span>
+              <img src={stat.icon} alt="" className={styles.statIcon} />
+              <span className={styles.statLabel}>{stat.label}</span>
             </div>
             <div className={styles.statValue}>{stat.value}</div>
           </div>
         ))}
       </div>
 
-      <div className={styles.chartsRow}>
-        <div className={styles.chartPanel}>
-          <div className={styles.chartHeader}>
-            <h2 className={styles.sectionTitle}>Today&apos;s Trends</h2>
+      {/* ── Middle Row ── */}
+      <div className={styles.middleRow}>
+
+        {/* Trends Card */}
+        <div className={styles.trendsCard}>
+          <div className={styles.trendsHeader}>
+            <h2 className={styles.trendsTitle}>Today's Trends</h2>
             <div className={styles.chartTabs}>
               {['Today', 'Week', 'Month'].map((tab) => (
                 <button
@@ -92,74 +95,67 @@ function ClientOverview() {
               ))}
             </div>
           </div>
-          <div className={styles.chartContainer}>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={CHART_DATA} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#252525" vertical={false} />
-                <XAxis
-                  dataKey="time"
-                  tick={{ fill: '#888888', fontSize: 12 }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <YAxis
-                  tick={{ fill: '#888888', fontSize: 12 }}
-                  axisLine={false}
-                  tickLine={false}
-                  ticks={[0, 10000, 20000, 30000]}
-                  tickFormatter={(v) => (v === 0 ? '' : `${v / 1000}K`)}
-                />
-                <Tooltip
-                  contentStyle={{
-                    background: '#252525',
-                    border: '1px solid #333',
-                    borderRadius: 8,
-                    color: '#fff',
-                  }}
-                />
-                <Bar dataKey="value" radius={[4, 4, 0, 0]} maxBarSize={40}>
-                  {CHART_DATA.map((entry) => (
-                    <Cell key={entry.time} fill={entry.active ? '#E8440A' : '#2A2A2A'} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+
+          <div className={styles.chartArea}>
+            <div className={styles.cssChart}>
+              <div className={styles.yAxis}>
+                <span>30K</span>
+                <span>20K</span>
+                <span>10K</span>
+              </div>
+              <div className={styles.bars}>
+                {TREND_DATA.map((entry) => (
+                  <div key={entry.time} className={styles.barCol}>
+                    <div
+                      className={styles.bar}
+                      style={{
+                        height: `${(entry.value / 30000) * 100}%`,
+                        background: HIGHLIGHT_TIMES.has(entry.time) ? '#E8440A' : '#3A3A3A',
+                      }}
+                    />
+                    <span className={styles.barLabel}>{entry.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className={styles.foodPanel}>
-          <h2 className={styles.sectionTitle}>By Sold Food</h2>
-          <div className={styles.foodList}>
-            {SOLD_FOOD.map((item) => (
-              <div key={item.label} className={styles.foodRow}>
-                <span className={styles.foodLabel}>
+        {/* By Sold Food */}
+        <div className={styles.businessCard}>
+          <h2 className={styles.businessTitle}>By Sold Food</h2>
+          <div className={styles.businessList}>
+            {BY_SOLD_FOOD.map((item) => (
+              <div key={item.label} className={styles.businessRow}>
+                <span className={styles.businessLabel}>
                   <span className={item.dot === 'orange' ? styles.dotOrange : styles.dotGrey} />
                   {item.label}
                 </span>
-                <span className={styles.foodAmount}>{item.amount}</span>
+                <span className={styles.businessAmount}>{item.amount}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
 
+      {/* ── Recent Orders ── */}
       <div className={styles.recentCard}>
         <h2 className={styles.recentTitle}>Recent Orders</h2>
-        <div className={styles.orderRows}>
+        <div className={styles.recentRows}>
           {RECENT_ORDERS.map((order) => (
-            <div key={order.name} className={styles.orderRow}>
-              <div className={styles.orderInfo}>
-                <h4>{order.name}</h4>
-                <span className={styles.orderUpdated}>{order.updated}</span>
+            <div key={order.name} className={styles.recentRow}>
+              <div>
+                <div className={styles.clientName}>{order.name}</div>
+                <div className={styles.clientUpdated}>{order.updated}</div>
               </div>
               <CategoryBadge category={order.category} />
-              <span className={styles.orderPrice}>{order.price}</span>
+              <span className={styles.clientRevenue}>{order.revenue}</span>
             </div>
           ))}
         </div>
-        {/* SHRIMPS IMAGE PLACEHOLDER */}
-        <div className={styles.shrimpsPlaceholder} />
+        <img src={shrimpsImg} alt="" className={styles.decorImg} />
       </div>
+
     </div>
   );
 }
