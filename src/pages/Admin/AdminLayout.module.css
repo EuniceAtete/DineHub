@@ -41,7 +41,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 8px;
   min-height: 0;
 }
 
@@ -61,16 +61,31 @@
   color: #aaaaaa;
 }
 
+/* Active link — text orange, left border orange */
 .navLinkActive {
   color: #e8440a;
   border-left-color: #e8440a;
 }
 
+/* ── Icon sizing and default grey filter ── */
 .navIcon {
-  width: 20px;
-  height: 20px;
+  width: 18px;           /* smaller than before */
+  height: 18px;
   object-fit: contain;
   flex-shrink: 0;
+  /* Turn the PNG orange to grey for inactive state */
+  filter: grayscale(100%) brightness(1.2);
+  transition: filter 0.2s;
+}
+
+/* When the parent link is active, remove the filter to show original orange */
+.navLinkActive .navIcon {
+  filter: none;
+}
+
+/* Also restore on hover */
+.navLink:hover .navIcon {
+  filter: grayscale(40%) brightness(1.1);
 }
 
 .sidebarBottom {
@@ -106,6 +121,14 @@
   color: #e8440a;
 }
 
+.accountLeft .navIcon {
+  filter: grayscale(100%) brightness(1.2);
+}
+
+.accountLeft:hover .navIcon {
+  filter: none;
+}
+
 .logoutBtn {
   display: flex;
   align-items: center;
@@ -117,13 +140,16 @@
 }
 
 .logoutIcon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   object-fit: contain;
+  filter: grayscale(100%) brightness(1.2);
   opacity: 0.7;
+  transition: filter 0.2s, opacity 0.2s;
 }
 
 .logoutBtn:hover .logoutIcon {
+  filter: none;
   opacity: 1;
 }
 
@@ -228,4 +254,8 @@
   flex-direction: column;
   min-height: 0;
   background: #0e0e0e;
+}
+
+.navLinkActive .navIcon {
+  filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(1200%) hue-rotate(5deg) brightness(95%) !important;
 }
