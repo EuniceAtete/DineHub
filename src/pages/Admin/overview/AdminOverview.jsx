@@ -137,73 +137,72 @@ function AdminOverview() {
       </section>
 
       <section className={styles.middleRow}>
-        <article className={styles.trendsCard}>
-          <h2 className={styles.trendsTitle}>This week's trends</h2>
+        <article className={styles.chartCard}>
+          <h2 className={styles.chartTitle}>This week's trends</h2>
           <div className={styles.chartArea}>
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={TREND_DATA} margin={{ top: 14, right: 8, bottom: 0, left: 0 }}>
+              <LineChart
+                data={TREND_DATA}
+                margin={{ top: 4, right: 8, left: 0, bottom: 0 }}
+              >
                 <XAxis
                   dataKey="date"
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: '#A8A8A8', fontSize: 12 }}
-                  dy={8}
+                  tick={{ fill: '#888888', fontSize: 10 }}
                 />
                 <YAxis
-                  domain={[20000, 52000]}
-                  ticks={[20000, 30000, 40000, 50000]}
-                  tickFormatter={(value) => `$${value / 1000}K`}
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: '#D6D6D6', fontSize: 14 }}
-                  width={46}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="prev"
-                  stroke="#6C6C6C"
-                  strokeDasharray="5 7"
-                  strokeWidth={1.3}
-                  dot={false}
-                  activeDot={false}
+                  tickFormatter={(v) => `$${v / 1000}K`}
+                  tick={{ fill: '#888888', fontSize: 10 }}
+                  width={40}
                 />
                 <Line
                   type="monotone"
                   dataKey="revenue"
                   stroke="#E8440A"
                   strokeWidth={2}
-                  dot={{ fill: '#E8440A', stroke: '#E8440A', r: 2 }}
-                  activeDot={{ fill: '#E8440A', stroke: '#E8440A', r: 4 }}
+                  dot={{ fill: '#E8440A', r: 3 }}
+                  activeDot={{ r: 5 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="prev"
+                  stroke="#444444"
+                  strokeWidth={1.5}
+                  strokeDasharray="4 4"
+                  dot={false}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </article>
 
-        <div className={styles.rightColumn}>
+        <div className={styles.rightCol}>
           <article className={styles.topBusinessCard}>
             <span className={styles.crownIcon}>
               <CrownIcon />
             </span>
             <div className={styles.topBusinessCopy}>
-              <p>Top Business:</p>
-              <strong>M HOTEL</strong>
+              <p className={styles.topBusinessLabel}>Top Business:</p>
+              <strong className={styles.topBusinessName}>M HOTEL</strong>
             </div>
           </article>
 
           <article className={styles.activityCard}>
             <div className={styles.activityHeader}>
-              <h2>Live Activity Feed</h2>
+              <h2 className={styles.activityTitle}>Live Activity Feed</h2>
               <button type="button">View All</button>
             </div>
             <div className={styles.activityList}>
               {ACTIVITIES.map((activity) => (
                 <div key={activity.label} className={styles.activityRow}>
-                  <span className={`${styles.activityIcon} ${styles[activity.tone]}`}>
+                  <span className={`${styles.activityDot} ${styles[activity.tone]}`}>
                     {activity.icon}
                   </span>
-                  <strong>{activity.label}</strong>
-                  <time>{activity.time}</time>
+                  <strong className={styles.activityName}>{activity.label}</strong>
+                  <time className={styles.activityTime}>{activity.time}</time>
                 </div>
               ))}
             </div>
@@ -213,12 +212,12 @@ function AdminOverview() {
 
       <section className={styles.recentCard}>
         <div className={styles.recentHeader}>
-          <h2>Recent Clients</h2>
-          <button type="button">View All <span>⌄</span></button>
+          <h2 className={styles.recentTitle}>Recent Clients</h2>
+          <button type="button">View All <span>v</span></button>
         </div>
 
         <div className={styles.table}>
-          <div className={styles.tableHead}>
+          <div className={styles.tableHeader}>
             <span>Business</span>
             <span>Category</span>
             <span>Revenue</span>
@@ -228,7 +227,7 @@ function AdminOverview() {
           {RECENT_CLIENTS.map((client) => (
             <div key={client.business} className={styles.tableRow}>
               <div className={styles.businessCell}>
-                <span className={styles.logoPlaceholder}>{client.business.slice(0, 2)}</span>
+                <span className={styles.businessLogo}>{client.business.slice(0, 2)}</span>
                 <strong>{client.business}</strong>
               </div>
               <span className={`${styles.categoryBadge} ${styles[client.tone]}`}>
