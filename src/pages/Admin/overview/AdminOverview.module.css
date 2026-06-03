@@ -1,25 +1,32 @@
 .page {
+  height: 100%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 16px;
+  gap: 20px;
   overflow: hidden;
-  padding: 4px 0;
+  background: #0e0e0e;
+  color: #ffffff;
 }
 
-/* ── Stat Cards ── */
 .statsRow {
-  display: flex;
-  gap: 14px;
-  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 34px;
+  flex: 0 0 116px;
 }
 
 .statCard {
-  flex: 1;
+  min-width: 0;
+  height: 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
   background: #1a1a1a;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 14px 18px;
-  border: 1.5px solid transparent;
 }
 
 .statCardActive {
@@ -27,312 +34,528 @@
 }
 
 .statHeader {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 18px;
 }
 
 .statIcon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
+  width: 32px;
+  height: 32px;
+  color: #e8440a;
+  flex: 0 0 32px;
+}
+
+.statIcon svg,
+.crownIcon svg,
+.activityIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
 }
 
 .statLabel {
   color: #e8440a;
-  font-size: 12px;
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .statValue {
-  color: #ffffff;
-  font-size: 38px;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 700;
   margin-top: 6px;
-  line-height: 1.1;
+  color: #ffffff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
-/* ── Middle Row — smaller height ── */
 .middleRow {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;        /* ← gap between trends and business type cards */
-  flex: 0 0 180px;  /* ← smaller card height */
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 1fr);
+  gap: 26px;
+  flex: 0 0 334px;
   min-height: 0;
 }
 
-/* ── Trends Card ── */
-.trendsCard {
-  flex: 0 0 40%;
-  min-width: 0;
+.trendsCard,
+.topBusinessCard,
+.activityCard,
+.recentCard {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  overflow: hidden;
-  background-color: #1a1a1a;
-  display: flex;
-  flex-direction: column;
-  padding: 14px 16px 8px;
 }
 
-.trendsHeader {
+.trendsCard {
+  min-width: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  margin-bottom: 4px;
+  flex-direction: column;
+  padding: 20px 20px 12px;
+  overflow: hidden;
 }
 
 .trendsTitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  margin: -10px 0 8px 36px;
+  color: #ffffff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
-}
-
-.chartTabs {
-  display: flex;
-  gap: 6px;
-}
-
-.chartTab {
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-family: 'Inter', sans-serif;
-  color: #888888;
-  background: #252525;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.chartTabActive {
-  background: #e8440a;
-  color: #ffffff;
+  line-height: 1.1;
 }
 
 .chartArea {
   flex: 1;
   min-height: 0;
-  width: 100%;
 }
 
-/* ── Business Type Card ── */
-.businessCard {
-  flex: 0 0 680px;
+.rightColumn {
   min-width: 0;
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 16px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 94px 1fr;
+  gap: 28px;
 }
 
-.businessTitle {
-  font-family: 'Cormorant Garamond', serif;
+.topBusinessCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  padding: 16px 28px;
+}
+
+.crownIcon {
+  width: 54px;
+  height: 54px;
+  color: #e8440a;
+  flex: 0 0 54px;
+}
+
+.crownIcon svg {
+  fill: #e8440a;
+  stroke: #e8440a;
+  stroke-width: 1.8;
+}
+
+.topBusinessCopy {
+  text-align: left;
+}
+
+.topBusinessCopy p {
+  margin: 0 0 12px;
+  color: #e8440a;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 800;
+}
+
+.topBusinessCopy strong {
   color: #ffffff;
-  margin-bottom: 10px;
-  flex-shrink: 0;
-}
-
-.businessList {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-  gap: 0;
-}
-
-.businessRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 6px 0;
-  border-bottom: 1px solid #222;
-}
-
-.businessRow:last-child {
-  border-bottom: none;
-}
-
-.businessLabel {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: #888888;
-}
-
-.dotOrange {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #e8440a;
-  flex-shrink: 0;
-}
-
-.dotGrey {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #444444;
-  flex-shrink: 0;
-}
-
-.businessAmount {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  color: #ffffff;
-  font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
-/* ── Recent Clients — bigger, more padding ── */
-.recentCard {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 22px 28px;
-  flex: 1;          /* takes all remaining space */
+.activityCard {
   min-height: 0;
-  position: relative;
+  padding: 18px 30px 20px;
   overflow: hidden;
 }
 
-.recentTitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: #e8440a;
-  margin-bottom: 18px;
-}
-
-.recentRows {
+.activityHeader {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 68%;
-}
-
-.recentRow {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
   align-items: center;
-  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 22px;
 }
 
-.clientName {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 3px;
-}
-
-.clientUpdated {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: #888888;
-}
-
-.badgeResto {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
+.activityHeader h2 {
+  margin: 0;
   color: #e8440a;
-  text-transform: uppercase;
-  min-width: 52px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
 }
 
-.badgePill {
+.activityHeader button,
+.recentHeader button {
+  border: 0;
+  background: transparent;
+  color: #a8a8a8;
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  color: #ffffff;
-  text-transform: uppercase;
-  padding: 3px 12px;
-  border-radius: 999px;
-  border: 1px solid #444444;
-  background: #252525;
-  min-width: 52px;
-  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
-.clientRevenue {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
+.activityList {
+  display: grid;
+  gap: 18px;
+}
+
+.activityRow {
+  display: grid;
+  grid-template-columns: 31px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.activityIcon {
+  width: 31px;
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.activityIcon svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 2.2;
+}
+
+.orange {
+  color: #e08319;
+  background: rgba(224, 131, 25, 0.7);
+}
+
+.purple {
+  color: #e269df;
+  background: rgba(158, 68, 153, 0.8);
+}
+
+.green {
+  color: #49c147;
+  background: rgba(28, 91, 21, 0.8);
+}
+
+.activityRow strong {
+  min-width: 0;
   color: #ffffff;
-  font-weight: 500;
-  text-align: right;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* Lobster — bigger, bottom right */
+.activityRow time {
+  color: #d0d0d0;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.recentCard {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  padding: 16px 28px 22px 44px;
+  overflow: hidden;
+}
+
+.recentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.recentHeader h2 {
+  margin: 0;
+  color: #e8440a;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.recentHeader button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #1f1f1f;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.recentHeader span {
+  color: #8d8d8d;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.table {
+  width: calc(100% - 260px);
+  max-width: 980px;
+  display: grid;
+  font-family: 'Inter', sans-serif;
+}
+
+.tableHead,
+.tableRow {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.15fr) minmax(120px, 0.8fr) minmax(120px, 0.8fr) minmax(140px, 0.9fr) minmax(130px, 0.8fr);
+  align-items: center;
+  column-gap: 24px;
+}
+
+.tableHead {
+  height: 31px;
+  color: #9a9a9a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.tableRow {
+  height: 44px;
+  color: #d4d4d4;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.businessCell {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.businessCell strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoPlaceholder {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
+  border: 1px solid #b8b8a6;
+  background: #e7e3d4;
+  color: #505040;
+  font-size: 7px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.categoryBadge {
+  width: 100px;
+  min-height: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.hotel {
+  color: #8e70e8;
+  background: #443b78;
+}
+
+.pub {
+  color: #e073df;
+  background: #713b78;
+}
+
+.restaurant {
+  color: #e8440a;
+  background: #7b351e;
+}
+
+.cafe {
+  color: #ffa733;
+  background: #7a4a1e;
+}
+
+.revenueCell {
+  color: #a6a6a6;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.tableRow time {
+  color: #d4d4d4;
+  font-size: 15px;
+  font-weight: 800;
+}
+
 .lobsterImg {
   position: absolute;
-  height: 220px;
+  right: 20px;
+  bottom: -16px;
+  height: 260px;
   width: auto;
-  bottom: -12px;
-  right: 24px;
   object-fit: contain;
   pointer-events: none;
 }
 
-.cssChart {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: flex-end;
-  gap: 6px;
-}
-
-.yAxis {
+.navSection {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 80%;
-  padding-bottom: 20px;
-  color: #888888;
-  font-size: 11px;
-  font-family: 'Inter', sans-serif;
-  flex-shrink: 0;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
-.bars {
+.navSectionLabel {
   display: flex;
-  align-items: flex-end;
-  gap: 12px;         /* ← tiny gap between bars */
-  height: 100%;
-  flex: 1;
-  padding-bottom: 20px;
-}
-
-.barCol {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  width: 24px;      /* ← fixed narrow width instead of flex:1 */
-  flex-shrink: 0;
-  height: 100%;
-  gap: 4px;
-}
-
-.bar {
-  width: 100%;
-  border-radius: 4px 4px 0 0;
-  transition: height 0.3s ease;
-}
-
-.barLabel {
-  color: #888888;
-  font-size: 10px;
+  gap: 14px;
+  padding: 0 22px;
+  margin: 0 0 8px;
+  color: #8d8d8d;
   font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.navSectionLabel::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.sidebarUserCard {
+  margin: 0 24px 12px;
+  padding: 12px 12px 8px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: #111111;
+  font-family: 'Inter', sans-serif;
+}
+
+.sidebarUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.sidebarAvatar,
+.topAvatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e8440a;
+  color: #e8440a;
+  background: #171717;
+  border-radius: 50%;
+}
+
+.sidebarAvatar {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+}
+
+.sidebarAvatar svg,
+.topAvatar svg {
+  width: 19px;
+  height: 19px;
+  filter: none;
+}
+
+.sidebarUserCopy,
+.topUserCopy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1;
+}
+
+.sidebarUserCopy strong,
+.topUserCopy strong {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
   white-space: nowrap;
-  flex-shrink: 0;
+}
+
+.sidebarUserCopy small,
+.topUserCopy small {
+  color: #cfcfcf;
+  font-size: 9px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.upgradeButton {
+  width: 100%;
+  min-height: 34px;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e8440a;
+  border-radius: 6px;
+  background: transparent;
+  color: #e8440a;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.topAvatar {
+  width: 31px;
+  height: 31px;
+  flex: 0 0 31px;
+}
+
+@media (max-width: 1180px) {
+  .statsRow {
+    gap: 16px;
+  }
+
+  .statLabel {
+    font-size: 16px;
+  }
+
+  .statValue {
+    font-size: 36px;
+  }
+
+  .middleRow {
+    grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.9fr);
+    gap: 18px;
+  }
+
+  .table {
+    width: calc(100% - 210px);
+  }
+
+  .lobsterImg {
+    height: 220px;
+  }
 }
