@@ -1,150 +1,248 @@
-import { useState } from 'react';
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import styles from './AdminOverview.module.css';
-import customersIcon from '../../../assets/Admin/customers.png';
-import revenueIcon from '../../../assets/Admin/revenue.png';
-import ordersIcon from '../../../assets/Admin/orders.png';
-import lobsterImg from '../../../assets/Admin/lobster.png';
-
-const STATS = [
-  { label: 'Total Clients', value: '60', icon: customersIcon, active: true },
-  { label: 'Total Revenue', value: '38,300,000', icon: revenueIcon },
-  { label: 'Total Orders', value: '67,569', icon: ordersIcon },
-];
+import lobsterImg from '../../../assets/Overview/lobster.png';
 
 const TREND_DATA = [
-  { time: '8am',  value: 20000 },
-  { time: '9am',  value: 11000 },
-  { time: '10am', value: 30000 },
-  { time: '11am', value: 25000 },
-  { time: '12am', value: 27000 },
-  { time: '1pm',  value: 29000 },
-  { time: '2pm',  value: 10000 },
-  { time: '3pm',  value: 13000 },
+  { date: 'May 16', revenue: 22000, prev: 18000 },
+  { date: 'May 17', revenue: 25000, prev: 20000 },
+  { date: 'May 18', revenue: 20000, prev: 22000 },
+  { date: 'May 19', revenue: 32000, prev: 25000 },
+  { date: 'May 20', revenue: 42000, prev: 28000 },
+  { date: 'May 21', revenue: 51000, prev: 30000 },
 ];
 
-const HIGHLIGHT_TIMES = new Set(['8am', '10am', '1pm']);
+const STAT_CARDS = [
+  { label: 'Total Clients', value: '60', icon: <ClientsIcon />, active: true },
+  { label: 'Total Revenue', value: '38,300,000', icon: <RevenueIcon /> },
+  { label: 'Total Orders', value: '67,569', icon: <OrdersIcon /> },
+  { label: 'Active Businesses', value: '238', icon: <BusinessIcon /> },
+];
 
-const BUSINESS_TYPES = [
-  { label: 'Restaurants', amount: '24,000,000 RWF', dot: 'orange' },
-  { label: 'Hotels',      amount: '10,300,000 RWF', dot: 'grey'   },
-  { label: 'Pubs',        amount: '4,000,000 RWF',  dot: 'grey'   },
+const ACTIVITIES = [
+  { label: 'Revenue Milestone', time: '1 min ago', tone: 'orange', icon: <RevenueMiniIcon /> },
+  { label: 'New client registration', time: '15 min ago', tone: 'purple', icon: <ClientMiniIcon /> },
+  { label: 'Approval Request', time: '17 min ago', tone: 'green', icon: <ApprovalMiniIcon /> },
 ];
 
 const RECENT_CLIENTS = [
-  { name: 'Soy Restaurant', updated: 'Updated 1 day ago',  category: 'RESTO', revenue: '24,000,000 RWF' },
-  { name: 'M Hotel',        updated: 'Updated 2 days ago', category: 'HOTEL', revenue: '10,300,000 RWF' },
-  { name: 'Sundowner',      updated: 'Updated 4 days ago', category: 'PUB',   revenue: '4,000,000 RWF'  },
-  { name: 'EuniCafe',       updates: 'Updated a week ago', category: 'CAFE',  revenue: '1,043,000 RWF'},
+  { business: 'M Hotel', category: 'Hotel', revenue: '$142,560', lastActivity: '1 min ago', tone: 'hotel' },
+  { business: 'Urban Cafe', category: 'Pub', revenue: '$98,420', lastActivity: '3 mins ago', tone: 'pub' },
+  { business: 'Soy Resto', category: 'Restaurant', revenue: '$67,890', lastActivity: '15 mins ago', tone: 'restaurant' },
+  { business: 'Sundowner', category: 'Cafe', revenue: '$45,230', lastActivity: '1 hr ago', tone: 'cafe' },
 ];
 
-function CategoryBadge({ category }) {
-  if (category === 'RESTO') return <span className={styles.badgeResto}>{category}</span>;
-  return <span className={styles.badgePill}>{category}</span>;
+function ClientsIcon() {
+  return (
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <circle cx="12" cy="11" r="4" />
+      <path d="M4 25c.7-5 4-8 8-8s7.3 3 8 8" />
+      <circle cx="23" cy="10" r="3.4" />
+      <path d="M20 17.5c4.5.4 7.2 3 7.8 7.5" />
+    </svg>
+  );
+}
+
+function RevenueIcon() {
+  return (
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <path d="M17 4v26" />
+      <path d="M25 10.5h-12a4.5 4.5 0 0 0 0 9h8a4.5 4.5 0 0 1 0 9H8" />
+    </svg>
+  );
+}
+
+function OrdersIcon() {
+  return (
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <path d="M10 12h17l-1.4 17H11.4L10 12Z" />
+      <path d="M14 12a5 5 0 0 1 10 0" />
+      <path d="M5 6h5l3 7" />
+      <path d="M6 14h3" />
+      <path d="M6 20h4" />
+    </svg>
+  );
+}
+
+function BusinessIcon() {
+  return (
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <path d="M7 29V7h13v22" />
+      <path d="M20 14h7v15" />
+      <path d="M11 12h5M11 18h5M11 24h5" />
+      <path d="M4 29h26" />
+    </svg>
+  );
+}
+
+function CrownIcon() {
+  return (
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M10 25l11 10 11-22 11 22 11-10-5 26H15L10 25Z" />
+      <circle cx="10" cy="25" r="5" />
+      <circle cx="32" cy="13" r="5" />
+      <circle cx="54" cy="25" r="5" />
+      <path d="M16 56h32" />
+    </svg>
+  );
+}
+
+function RevenueMiniIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 5v14M17 8H9.5a3 3 0 0 0 0 6H14a3 3 0 0 1 0 6H7" />
+    </svg>
+  );
+}
+
+function ClientMiniIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 10h12l-1 10H7L6 10Z" />
+      <path d="M9 10a3 3 0 0 1 6 0" />
+    </svg>
+  );
+}
+
+function ApprovalMiniIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 5v14M12 5v14M18 5v14" />
+      <path d="M4 15l2 3 3-5M10 15l2 3 3-5M16 15l2 3 3-5" />
+    </svg>
+  );
 }
 
 function AdminOverview() {
-  const [chartPeriod, setChartPeriod] = useState('Today');
-
   return (
     <div className={styles.page}>
-
-      {/* ── Stat Cards ── */}
-      <div className={styles.statsRow}>
-        {STATS.map((stat) => (
-          <div
+      <section className={styles.statsRow} aria-label="Admin statistics">
+        {STAT_CARDS.map((stat) => (
+          <article
             key={stat.label}
             className={`${styles.statCard} ${stat.active ? styles.statCardActive : ''}`}
           >
             <div className={styles.statHeader}>
-              <img src={stat.icon} alt="" className={styles.statIcon} />
+              <span className={styles.statIcon}>{stat.icon}</span>
               <span className={styles.statLabel}>{stat.label}</span>
             </div>
-            <div className={styles.statValue}>{stat.value}</div>
-          </div>
+            <strong className={styles.statValue}>{stat.value}</strong>
+          </article>
         ))}
-      </div>
+      </section>
 
-      {/* ── Middle Row ── */}
-      <div className={styles.middleRow}>
+      <section className={styles.middleRow}>
+        <article className={styles.trendsCard}>
+          <h2 className={styles.trendsTitle}>This week's trends</h2>
+          <div className={styles.chartArea}>
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={TREND_DATA} margin={{ top: 14, right: 8, bottom: 0, left: 0 }}>
+                <XAxis
+                  dataKey="date"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#A8A8A8', fontSize: 12 }}
+                  dy={8}
+                />
+                <YAxis
+                  domain={[20000, 52000]}
+                  ticks={[20000, 30000, 40000, 50000]}
+                  tickFormatter={(value) => `$${value / 1000}K`}
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: '#D6D6D6', fontSize: 14 }}
+                  width={46}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="prev"
+                  stroke="#6C6C6C"
+                  strokeDasharray="5 7"
+                  strokeWidth={1.3}
+                  dot={false}
+                  activeDot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="revenue"
+                  stroke="#E8440A"
+                  strokeWidth={2}
+                  dot={{ fill: '#E8440A', stroke: '#E8440A', r: 2 }}
+                  activeDot={{ fill: '#E8440A', stroke: '#E8440A', r: 4 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </article>
 
-        {/* Trends Card — pure CSS chart, no Recharts */}
-        <div className={styles.trendsCard}>
-          <div className={styles.trendsHeader}>
-            <h2 className={styles.trendsTitle}>Today's Trends</h2>
-            <div className={styles.chartTabs}>
-              {['Today', 'Week', 'Month'].map((tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  className={`${styles.chartTab} ${chartPeriod === tab ? styles.chartTabActive : ''}`}
-                  onClick={() => setChartPeriod(tab)}
-                >
-                  {tab}
-                </button>
+        <div className={styles.rightColumn}>
+          <article className={styles.topBusinessCard}>
+            <span className={styles.crownIcon}>
+              <CrownIcon />
+            </span>
+            <div className={styles.topBusinessCopy}>
+              <p>Top Business:</p>
+              <strong>M HOTEL</strong>
+            </div>
+          </article>
+
+          <article className={styles.activityCard}>
+            <div className={styles.activityHeader}>
+              <h2>Live Activity Feed</h2>
+              <button type="button">View All</button>
+            </div>
+            <div className={styles.activityList}>
+              {ACTIVITIES.map((activity) => (
+                <div key={activity.label} className={styles.activityRow}>
+                  <span className={`${styles.activityIcon} ${styles[activity.tone]}`}>
+                    {activity.icon}
+                  </span>
+                  <strong>{activity.label}</strong>
+                  <time>{activity.time}</time>
+                </div>
               ))}
             </div>
-          </div>
+          </article>
+        </div>
+      </section>
 
-          <div className={styles.chartArea}>
-            <div className={styles.cssChart}>
-              <div className={styles.yAxis}>
-                <span>30K</span>
-                <span>20K</span>
-                <span>10K</span>
-              </div>
-              <div className={styles.bars}>
-                {TREND_DATA.map((entry) => (
-                  <div key={entry.time} className={styles.barCol}>
-                    <div
-                      className={styles.bar}
-                      style={{
-                        height: `${(entry.value / 30000) * 100}%`,
-                        background: HIGHLIGHT_TIMES.has(entry.time) ? '#E8440A' : '#3A3A3A',
-                      }}
-                    />
-                    <span className={styles.barLabel}>{entry.time}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <section className={styles.recentCard}>
+        <div className={styles.recentHeader}>
+          <h2>Recent Clients</h2>
+          <button type="button">View All <span>⌄</span></button>
         </div>
 
-        {/* By Business Type */}
-        <div className={styles.businessCard}>
-          <h2 className={styles.businessTitle}>By Business Type</h2>
-          <div className={styles.businessList}>
-            {BUSINESS_TYPES.map((item) => (
-              <div key={item.label} className={styles.businessRow}>
-                <span className={styles.businessLabel}>
-                  <span className={item.dot === 'orange' ? styles.dotOrange : styles.dotGrey} />
-                  {item.label}
-                </span>
-                <span className={styles.businessAmount}>{item.amount}</span>
-              </div>
-            ))}
+        <div className={styles.table}>
+          <div className={styles.tableHead}>
+            <span>Business</span>
+            <span>Category</span>
+            <span>Revenue</span>
+            <span>Last Activity</span>
+            <span>Activities</span>
           </div>
-        </div>
-      </div>
-
-      {/* ── Recent Clients ── */}
-      <div className={styles.recentCard}>
-        <h2 className={styles.recentTitle}>Recent Clients</h2>
-        <div className={styles.recentRows}>
           {RECENT_CLIENTS.map((client) => (
-            <div key={client.name} className={styles.recentRow}>
-              <div>
-                <div className={styles.clientName}>{client.name}</div>
-                <div className={styles.clientUpdated}>{client.updated}</div>
+            <div key={client.business} className={styles.tableRow}>
+              <div className={styles.businessCell}>
+                <span className={styles.logoPlaceholder}>{client.business.slice(0, 2)}</span>
+                <strong>{client.business}</strong>
               </div>
-              <CategoryBadge category={client.category} />
-              <span className={styles.clientRevenue}>{client.revenue}</span>
+              <span className={`${styles.categoryBadge} ${styles[client.tone]}`}>
+                {client.category}
+              </span>
+              <span className={styles.revenueCell}>{client.revenue}</span>
+              <time>{client.lastActivity}</time>
+              <span aria-hidden="true" />
             </div>
           ))}
         </div>
-        <img src={lobsterImg} alt="" className={styles.lobsterImg} />
-      </div>
 
+        <img src={lobsterImg} alt="" className={styles.lobsterImg} />
+      </section>
     </div>
   );
 }
