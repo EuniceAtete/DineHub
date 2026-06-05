@@ -1,164 +1,33 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import styles from './AdminLayout.module.css';
-import overviewStyles from './overview/AdminOverview.module.css';
-import logoImg from '../../assets/Landing/Logo.png';
 
-const NAV_SECTIONS = [
-  {
-    label: 'MAIN',
-    items: [
-      { to: 'overview', label: 'Overview', icon: <OverviewIcon /> },
-      { to: 'clients', label: 'Clients', icon: <ClientsIcon /> },
-      { to: 'requests', label: 'Requests', icon: <RequestsIcon /> },
-      { to: '/admin/staff', label: 'Staff', icon: <StaffIcon /> },
-      { to: '/admin/orders', label: 'Orders', icon: <OrdersIcon /> },
-    ],
-  },
-  {
-    label: 'ANALYTICS',
-    items: [
-      { to: '/admin/reports', label: 'Reports', icon: <ReportsIcon /> },
-      { to: '/admin/marketing', label: 'Marketing', icon: <MarketingIcon /> },
-      { to: '/admin/payments', label: 'Payments', icon: <PaymentsIcon /> },
-    ],
-  },
-  {
-    label: 'SYSTEM',
-    items: [
-      { to: 'settings', label: 'Settings', icon: <SettingsIcon /> },
-      { to: '/admin/account', label: 'My Account', icon: <AccountIcon /> },
-    ],
-  },
-];
+// Import nav PNG assets
+import logoImg from '../../assets/Auth Pages/Logo.png';
+import overviewIcon from '../../assets/Overview/overview.png';
+import usersIcon from '../../assets/Overview/users.png';
+import requestsIcon from '../../assets/Overview/requests.png';
+import userIcon from '../../assets/Overview/user.png';
+import ordersIcon from '../../assets/Overview/orders.png';
+import reportsIcon from '../../assets/Overview/reports.png';
+import marketingIcon from '../../assets/Overview/marketing.png';
+import creditcardIcon from '../../assets/Overview/creditcard,png.png';
+import settingsIcon from '../../assets/Overview/settings.png';
+import myaccIcon from '../../assets/Overview/myacc.png';
+import logoutIcon from '../../assets/Overview/logout.png';
 
-function SvgIcon({ children }) {
+function HamburgerIcon() {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={styles.navIcon}
-      aria-hidden="true"
-    >
-      {children}
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888888" strokeWidth="2" strokeLinecap="round">
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="4" y1="18" x2="20" y2="18" />
     </svg>
-  );
-}
-
-function OverviewIcon() {
-  return (
-    <SvgIcon>
-      <rect x="3" y="3" width="6" height="6" />
-      <rect x="15" y="3" width="6" height="6" />
-      <rect x="3" y="15" width="6" height="6" />
-      <rect x="15" y="15" width="6" height="6" />
-    </SvgIcon>
-  );
-}
-
-function ClientsIcon() {
-  return (
-    <SvgIcon>
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </SvgIcon>
-  );
-}
-
-function RequestsIcon() {
-  return (
-    <SvgIcon>
-      <path d="M6 4v16" />
-      <path d="M18 4v16" />
-      <path d="M6 8h4l4 8h4" />
-      <circle cx="6" cy="4" r="2" />
-      <circle cx="18" cy="4" r="2" />
-      <circle cx="6" cy="20" r="2" />
-      <circle cx="18" cy="20" r="2" />
-    </SvgIcon>
-  );
-}
-
-function StaffIcon() {
-  return (
-    <SvgIcon>
-      <circle cx="8" cy="8" r="3" />
-      <path d="M3 21v-2a5 5 0 0 1 10 0v2" />
-      <path d="M16 8h5" />
-      <path d="M16 14h5" />
-      <path d="M16 20h5" />
-    </SvgIcon>
-  );
-}
-
-function OrdersIcon() {
-  return (
-    <SvgIcon>
-      <path d="M6 7h12l-1 14H7L6 7Z" />
-      <path d="M9 7a3 3 0 0 1 6 0" />
-      <path d="M3 3h4l2 4" />
-    </SvgIcon>
-  );
-}
-
-function ReportsIcon() {
-  return (
-    <SvgIcon>
-      <path d="M4 20V10" />
-      <path d="M10 20V4" />
-      <path d="M16 20v-7" />
-      <path d="M22 20V8" />
-    </SvgIcon>
-  );
-}
-
-function MarketingIcon() {
-  return (
-    <SvgIcon>
-      <path d="M3 11v4a2 2 0 0 0 2 2h2l4 4v-4h3l7 3V6l-7 3H5a2 2 0 0 0-2 2Z" />
-      <path d="M14 9v8" />
-    </SvgIcon>
-  );
-}
-
-function PaymentsIcon() {
-  return (
-    <SvgIcon>
-      <rect x="3" y="5" width="18" height="14" rx="3" />
-      <path d="M3 10h18" />
-      <path d="M7 15h4" />
-    </SvgIcon>
-  );
-}
-
-function SettingsIcon() {
-  return (
-    <SvgIcon>
-      <path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z" />
-      <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.08a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.08a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.08a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.1.36.38.65.75.82.24.12.5.18.77.18H21a2 2 0 1 1 0 4h-.08a1.7 1.7 0 0 0-1.52 1Z" />
-    </SvgIcon>
-  );
-}
-
-function AccountIcon() {
-  return (
-    <SvgIcon>
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 21a8 8 0 0 1 16 0" />
-    </SvgIcon>
   );
 }
 
 function SearchIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.searchIcon} aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
@@ -167,18 +36,36 @@ function SearchIcon() {
 
 function CalendarIcon() {
   return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-      <path d="M8 2v4M16 2v4M3 10h18" />
-      <rect x="3" y="4" width="18" height="18" rx="2" />
-      <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <line x1="16" y1="2" x2="16" y2="6" />
+      <line x1="8" y1="2" x2="8" y2="6" />
+      <line x1="3" y1="10" x2="21" y2="10" />
+    </svg>
+  );
+}
+
+function BellIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
     </svg>
   );
 }
 
 function ChevronDownIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+function PersonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
     </svg>
   );
 }
@@ -186,53 +73,144 @@ function ChevronDownIcon() {
 function AdminLayout() {
   const navigate = useNavigate();
 
-  const handleUpgrade = () => {
-    navigate('/pricing');
-  };
-
   return (
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
         <div className={styles.brand}>
-          <img src={logoImg} alt="DineHub" className={styles.brandIcon} />
+          <img src={logoImg} alt="DineHub" className={styles.brandLogo} />
           <span className={styles.brandText}>DineHub</span>
         </div>
 
         <nav className={styles.nav}>
-          {NAV_SECTIONS.map((section) => (
-            <div key={section.label} className={overviewStyles.navSection}>
-              <div className={overviewStyles.navSectionLabel}>
-                <span>{section.label}</span>
-              </div>
-              {section.items.map(({ to, label, icon }) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  end={to === 'overview' || to === 'settings'}
-                  className={({ isActive }) =>
-                    `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
-                  }
-                >
-                  {icon}
-                  {label}
-                </NavLink>
-              ))}
-            </div>
-          ))}
+          {/* MAIN SECTION */}
+          <div className={styles.navSection}>
+            <div className={styles.sectionLabel}>MAIN</div>
+            <NavLink
+              to="overview"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={overviewIcon} alt="Overview" className={styles.navIcon} />
+              <span>Overview</span>
+            </NavLink>
+            <NavLink
+              to="clients"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={usersIcon} alt="Clients" className={styles.navIcon} />
+              <span>Clients</span>
+            </NavLink>
+            <NavLink
+              to="requests"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={requestsIcon} alt="Requests" className={styles.navIcon} />
+              <span>Requests</span>
+            </NavLink>
+            <NavLink
+              to="/admin/users"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={userIcon} alt="Staff" className={styles.navIcon} />
+              <span>Staff</span>
+            </NavLink>
+            <NavLink
+              to="/admin/orders"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={ordersIcon} alt="Orders" className={styles.navIcon} />
+              <span>Orders</span>
+            </NavLink>
+          </div>
+
+          {/* ANALYTICS SECTION */}
+          <div className={styles.navSection}>
+            <div className={styles.sectionLabel}>ANALYTICS</div>
+            <NavLink
+              to="/admin/reports"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={reportsIcon} alt="Reports" className={styles.navIcon} />
+              <span>Reports</span>
+            </NavLink>
+            <NavLink
+              to="/admin/marketing"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={marketingIcon} alt="Marketing" className={styles.navIcon} />
+              <span>Marketing</span>
+            </NavLink>
+            <NavLink
+              to="/admin/payments"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={creditcardIcon} alt="Payments" className={styles.navIcon} />
+              <span>Payments</span>
+            </NavLink>
+          </div>
+
+          {/* SYSTEM SECTION */}
+          <div className={styles.navSection}>
+            <div className={styles.sectionLabel}>SYSTEM</div>
+            <NavLink
+              to="settings"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={settingsIcon} alt="Settings" className={styles.navIcon} />
+              <span>Settings</span>
+            </NavLink>
+            <NavLink
+              to="/admin/account"
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
+              }
+            >
+              <img src={myaccIcon} alt="My Account" className={styles.navIcon} />
+              <span>My Account</span>
+            </NavLink>
+            <button
+              onClick={() => navigate('/login')}
+              className={styles.navLinkButton}
+            >
+              <img src={logoutIcon} alt="Logout" className={styles.navIcon} />
+              <span>Logout</span>
+            </button>
+          </div>
         </nav>
 
         <div className={styles.sidebarBottom}>
-          <div className={overviewStyles.sidebarUserCard}>
-            <div className={overviewStyles.sidebarUserInfo}>
-              <span className={overviewStyles.sidebarAvatar}>
-                <AccountIcon />
-              </span>
-              <span className={overviewStyles.sidebarUserCopy}>
+          <div className={styles.sidebarUserCard}>
+            <div className={styles.sidebarUserInfo}>
+              <div className={styles.sidebarAvatar}>
+                <PersonIcon />
+              </div>
+              <div className={styles.sidebarUserCopy}>
                 <strong>Eunice Atete</strong>
                 <small>Super Admin</small>
-              </span>
+              </div>
             </div>
-            <button type="button" className={overviewStyles.upgradeButton} onClick={handleUpgrade}>
+            <button
+              type="button"
+              className={styles.upgradeButton}
+              onClick={() => navigate('/pricing')}
+            >
               Upgrade to Pro!
             </button>
           </div>
@@ -241,30 +219,40 @@ function AdminLayout() {
 
       <div className={styles.mainArea}>
         <header className={styles.navbar}>
+          <button type="button" className={styles.hamburgerBtn} aria-label="Menu">
+            <HamburgerIcon />
+          </button>
+          
           <div className={styles.searchWrap}>
+            <SearchIcon />
             <input
               type="search"
               className={styles.searchInput}
               placeholder="Search clients, orders, businesses..."
               aria-label="Search"
             />
-            <SearchIcon />
           </div>
+
           <div className={styles.topbarRight}>
             <button type="button" className={styles.iconBtn} aria-label="Calendar">
               <CalendarIcon />
             </button>
-            <span className={styles.divider} />
-            <span className={`${styles.avatar} ${overviewStyles.topAvatar}`} aria-hidden="true">
-              <AccountIcon />
-            </span>
-            <span className={overviewStyles.topUserCopy}>
-              <strong>Eunice Atete</strong>
-              <small>Super Admin</small>
-            </span>
-            <button type="button" className={styles.iconBtn} aria-label="Open user menu">
-              <ChevronDownIcon />
+            <button type="button" className={styles.iconBtn} aria-label="Notifications">
+              <div className={styles.bellWrapper}>
+                <BellIcon />
+                <span className={styles.bellBadge}>8</span>
+              </div>
             </button>
+            <div className={styles.userProfile}>
+              <div className={styles.profileAvatar}>
+                <PersonIcon />
+              </div>
+              <div className={styles.profileInfo}>
+                <span className={styles.profileName}>Eunice Atete</span>
+                <span className={styles.profileRole}>Super Admin</span>
+              </div>
+              <ChevronDownIcon />
+            </div>
           </div>
         </header>
 
