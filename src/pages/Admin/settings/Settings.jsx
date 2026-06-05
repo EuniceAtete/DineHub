@@ -1,135 +1,101 @@
 import { useState } from 'react';
 import styles from './Settings.module.css';
 
-function PersonIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.cardIcon}>
-      <circle cx="12" cy="8" r="4" />
-      <path d="M6 21v-2a6 6 0 0 1 12 0v2" />
-    </svg>
-  );
-}
+const ROLES = [
+  { name: 'Super Admin', permissions: ['Clients', 'Orders', 'Reports', 'Settings'] },
+  { name: 'Operations', permissions: ['Clients', 'Orders'] },
+  { name: 'Finance', permissions: ['Reports'] },
+  { name: 'Marketing', permissions: ['Reports'] },
+];
 
-function PinIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.cardIcon}>
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  );
-}
+const PERMISSIONS = ['Clients', 'Orders', 'Reports', 'Settings'];
 
-function ClockIcon() {
+function Toggle({ checked, onChange }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.cardIcon}>
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
-  );
-}
-
-function ChevronDown() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.chevron}>
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
-}
-
-function Toggle({ on, onChange }) {
-  return (
-    <button
-      type="button"
-      className={`${styles.toggle} ${on ? styles.toggleOn : ''}`}
-      onClick={() => onChange(!on)}
-      aria-pressed={on}
-    >
-      <span className={styles.toggleKnob} />
+    <button type="button" className={`${styles.toggle} ${checked ? styles.toggleOn : ''}`} onClick={() => onChange(!checked)} aria-pressed={checked}>
+      <span />
     </button>
   );
 }
 
 function Settings() {
-  const [newRequests, setNewRequests] = useState(true);
-  const [clientUpdates, setClientUpdates] = useState(false);
+  const [emailAlerts, setEmailAlerts] = useState(true);
+  const [requestAlerts, setRequestAlerts] = useState(true);
+  const [paymentAlerts, setPaymentAlerts] = useState(false);
 
   return (
     <div className={styles.page}>
-      <section className={styles.card}>
-        <div className={styles.cardHeader}>
-          <PersonIcon />
-          <h2 className={styles.cardTitle}>Profile</h2>
+      <div className={styles.topBar}>
+        <div>
+          <h1 className={styles.pageHeading}>Settings</h1>
+          <p className={styles.pageSubtext}>Platform defaults, notifications, and role permissions.</p>
         </div>
-        <div className={styles.rowTwo}>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="first-name">First Name</label>
-            <input id="first-name" className={styles.input} type="text" defaultValue="Eunice" />
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="last-name">Last Name</label>
-            <input id="last-name" className={styles.input} type="text" defaultValue="Atete" />
-          </div>
-        </div>
-        <div className={`${styles.field} ${styles.fieldFull}`}>
-          <label className={styles.label} htmlFor="email">Email</label>
-          <input id="email" className={styles.input} type="email" defaultValue="euniceatete@gmail.com" />
-        </div>
-        <div className={`${styles.field} ${styles.fieldFull}`}>
-          <label className={styles.label} htmlFor="phone">Phone</label>
-          <input id="phone" className={styles.input} type="tel" defaultValue="+250 788 000 000" />
-        </div>
-      </section>
+        <button type="button" className={styles.primaryBtn}>Save</button>
+      </div>
 
-      <section className={styles.card}>
-        <div className={styles.cardHeader}>
-          <PinIcon />
+      <section className={styles.grid}>
+        <article className={styles.card}>
+          <h2 className={styles.cardTitle}>Platform Settings</h2>
+          <label className={styles.field}>
+            <span>Site Name</span>
+            <input className={styles.input} defaultValue="DineHub Admin" />
+          </label>
+          <label className={styles.field}>
+            <span>Logo Upload</span>
+            <button type="button" className={styles.uploadBtn}>Choose Logo</button>
+          </label>
+          <label className={styles.field}>
+            <span>Default Currency</span>
+            <select className={styles.input} defaultValue="RWF">
+              <option value="RWF">RWF</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+            </select>
+          </label>
+        </article>
+
+        <article className={styles.card}>
           <h2 className={styles.cardTitle}>Notifications</h2>
-        </div>
-        <div className={styles.toggleRow}>
-          <div className={styles.toggleInfo}>
-            <h4>New requests</h4>
-            <p>Get notified when a new request comes in</p>
+          <div className={styles.toggleRow}>
+            <div><strong>Email summaries</strong><span>Daily admin digest</span></div>
+            <Toggle checked={emailAlerts} onChange={setEmailAlerts} />
           </div>
-          <Toggle on={newRequests} onChange={setNewRequests} />
-        </div>
-        <div className={styles.toggleRow}>
-          <div className={styles.toggleInfo}>
-            <h4>Client updates</h4>
-            <p>Alerts when a client updates their profile</p>
+          <div className={styles.toggleRow}>
+            <div><strong>New requests</strong><span>Alert on pending approvals</span></div>
+            <Toggle checked={requestAlerts} onChange={setRequestAlerts} />
           </div>
-          <Toggle on={clientUpdates} onChange={setClientUpdates} />
-        </div>
+          <div className={styles.toggleRow}>
+            <div><strong>Payment issues</strong><span>Alert on failed transactions</span></div>
+            <Toggle checked={paymentAlerts} onChange={setPaymentAlerts} />
+          </div>
+        </article>
       </section>
 
       <section className={styles.card}>
-        <div className={styles.cardHeader}>
-          <ClockIcon />
-          <h2 className={styles.cardTitle}>Language & Time</h2>
-        </div>
-        <div className={styles.rowTwo}>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="language">Language</label>
-            <div className={styles.selectWrap}>
-              <select id="language" className={styles.select} defaultValue="en">
-                <option value="en">English</option>
-              </select>
-              <ChevronDown />
-            </div>
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="timezone">Time</label>
-            <div className={styles.selectWrap}>
-              <select id="timezone" className={styles.select} defaultValue="cat">
-                <option value="cat">Rwanda (CAT)</option>
-              </select>
-              <ChevronDown />
-            </div>
-          </div>
+        <h2 className={styles.cardTitle}>User Role Management</h2>
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Role</th>
+                {PERMISSIONS.map((permission) => <th key={permission}>{permission}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {ROLES.map((role) => (
+                <tr key={role.name}>
+                  <td className={styles.roleName}>{role.name}</td>
+                  {PERMISSIONS.map((permission) => (
+                    <td key={permission}>
+                      <input type="checkbox" className={styles.checkbox} defaultChecked={role.permissions.includes(permission)} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
-
-      {/* SAUCE BOTTLE PLACEHOLDER */}
-      <div className={styles.saucePlaceholder} />
     </div>
   );
 }
