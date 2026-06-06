@@ -1,0 +1,24 @@
+.page { display: flex; flex-direction: column; height: 100%; gap: 14px; overflow: hidden; background: #0e0e0e; }
+.topBar { display: flex; align-items: center; justify-content: space-between; }
+.pageHeading { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #ffffff; }
+.pageSubtext { margin: 6px 0 0; color: #888888; font-size: 12px; }
+.controlsCard, .tableCard { background: #1a1a1a; border: 1px solid #252525; border-radius: 10px; }
+.controlsCard { display: flex; flex-wrap: wrap; gap: 10px; padding: 12px; }
+.select, .dateInput { height: 38px; border: 1px solid #333333; border-radius: 7px; background: #111111; color: #ffffff; padding: 0 12px; outline: none; font-size: 13px; }
+.select { width: 180px; }
+.dateRange { display: flex; align-items: center; gap: 8px; color: #888888; font-size: 12px; }
+.select:focus, .dateInput:focus { border-color: #e8440a; }
+.tableCard { flex: 1; min-height: 0; overflow: hidden; }
+.tableWrap { height: 100%; overflow: auto; }
+.table { width: 100%; min-width: 900px; border-collapse: collapse; }
+.table th, .table td { padding: 15px 18px; border-bottom: 1px solid #252525; text-align: left; font-size: 13px; }
+.table th { color: #666666; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.table td { color: #d7d7d7; }
+.idCell, .businessCell, .money { color: #ffffff; font-weight: 800; }
+.muted { color: #888888; }
+.statusBadge { display: inline-flex; min-width: 82px; justify-content: center; padding: 4px 10px; border-radius: 999px; font-size: 10px; font-weight: 800; }
+.pending { background: rgba(232, 68, 10, 0.16); color: #e8440a; }
+.preparing { background: rgba(255, 167, 51, 0.16); color: #ffa733; }
+.completed { background: rgba(73, 193, 71, 0.15); color: #49c147; }
+.cancelled { background: rgba(255, 75, 75, 0.15); color: #ff4b4b; }
+@media (max-width: 760px) { .select, .dateInput, .dateRange { width: 100%; } .dateRange { align-items: stretch; flex-direction: column; } }
