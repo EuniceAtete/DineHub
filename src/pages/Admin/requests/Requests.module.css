@@ -1,184 +1,26 @@
-.page {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.pageHeading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.filters {
-  display: flex;
-  gap: 8px;
-}
-
-.filterTab {
-  padding: 8px 20px;
-  border-radius: 999px;
-  font-size: 14px;
-  color: #888888;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-}
-
-.filterTabActive {
-  background: #e8440a;
-  color: #ffffff;
-}
-
-.contentRow {
-  display: grid;
-  grid-template-columns: 70% 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.requestsList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.requestCard {
-  background: #1a1a1a;
-  border: 1px solid #252525;
-  border-radius: 12px;
-  padding: 20px 24px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: center;
-}
-
-.requestLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.requestMeta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.requestLabel {
-  font-size: 13px;
-  font-weight: 600;
-  color: #e8440a;
-}
-
-.statusBadge {
-  font-size: 11px;
-  color: #888888;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: #252525;
-}
-
-.requestTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.restaurantName {
-  font-size: 14px;
-  color: #e8440a;
-}
-
-.requestRight {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #333333;
-}
-
-.warningIcon {
-  color: #e8440a;
-  font-size: 18px;
-  width: 24px;
-  text-align: center;
-}
-
-.warningSpacer {
-  width: 24px;
-}
-
-.detailBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.detailLabel {
-  font-size: 11px;
-  color: #888888;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.detailValue {
-  font-size: 14px;
-  color: #ffffff;
-  font-weight: 500;
-}
-
-.statsColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: #1a1a1a;
-  border-radius: 12px;
-  border: 1px solid #252525;
-  min-height: 320px;
-}
-
-.statBlock {
-  text-align: center;
-}
-
-.statNumber {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 48px;
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.statLabel {
-  font-size: 13px;
-  color: #888888;
-}
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 8px;
-  font-size: 14px;
-  color: #888888;
-}
-
-.pageArrows {
-  display: flex;
-  gap: 8px;
-}
-
-.pageArrow {
-  color: #e8440a;
-  font-size: 18px;
-  padding: 4px 8px;
-}
+.page { display: flex; flex-direction: column; height: 100%; gap: 14px; overflow: hidden; background: #0e0e0e; }
+.topBar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.pageHeading { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #ffffff; }
+.pageSubtext { margin: 6px 0 0; color: #888888; font-size: 12px; }
+.select { width: 180px; height: 38px; border: 1px solid #333333; border-radius: 7px; background: #111111; color: #ffffff; padding: 0 12px; outline: none; }
+.select:focus { border-color: #e8440a; }
+.tableCard { flex: 1; min-height: 0; overflow: hidden; background: #1a1a1a; border: 1px solid #252525; border-radius: 10px; }
+.tableWrap { height: 100%; overflow: auto; }
+.table { width: 100%; min-width: 860px; border-collapse: collapse; }
+.table th, .table td { padding: 15px 18px; border-bottom: 1px solid #252525; text-align: left; font-size: 13px; }
+.table th { color: #666666; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.table td { color: #d7d7d7; }
+.nameCell { color: #ffffff; font-weight: 800; }
+.typeCell { color: #e8440a; font-weight: 700; }
+.muted { color: #888888; }
+.statusBadge { display: inline-flex; min-width: 82px; justify-content: center; padding: 4px 10px; border-radius: 999px; font-size: 10px; font-weight: 800; }
+.pending { background: rgba(232, 68, 10, 0.16); color: #e8440a; }
+.approved { background: rgba(73, 193, 71, 0.15); color: #49c147; }
+.rejected { background: rgba(255, 75, 75, 0.15); color: #ff4b4b; }
+.actions { display: flex; gap: 8px; }
+.approveBtn, .rejectBtn { height: 30px; padding: 0 12px; border: none; border-radius: 6px; color: #ffffff; font-weight: 800; cursor: pointer; }
+.approveBtn { background: #e8440a; }
+.rejectBtn { background: #b32626; }
+.approveBtn:hover { background: #ff571a; }
+.rejectBtn:hover { background: #d63131; }
+@media (max-width: 720px) { .topBar { align-items: stretch; flex-direction: column; } .select { width: 100%; } }
