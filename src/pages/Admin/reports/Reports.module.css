@@ -1,0 +1,27 @@
+.page { display: flex; flex-direction: column; height: 100%; gap: 12px; overflow: hidden; background: #0e0e0e; }
+.topBar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.pageHeading { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #ffffff; }
+.pageSubtext { margin: 6px 0 0; color: #888888; font-size: 12px; }
+.primaryBtn { height: 38px; padding: 0 18px; border: none; border-radius: 7px; background: #e8440a; color: #ffffff; font-weight: 800; cursor: pointer; }
+.primaryBtn:hover { background: #ff571a; }
+.statsGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.statCard, .chartCard, .tableCard { background: #1a1a1a; border: 1px solid #252525; border-radius: 10px; }
+.statCard { min-height: 82px; padding: 14px 16px; display: flex; flex-direction: column; justify-content: center; }
+.statLabel { color: #e8440a; font-size: 11px; font-weight: 800; }
+.statValue { margin-top: 6px; color: #ffffff; font-family: 'Cormorant Garamond', serif; font-size: 25px; line-height: 1; }
+.chartsGrid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 10px; min-height: 250px; }
+.chartCard { min-height: 0; padding: 14px; display: flex; flex-direction: column; }
+.cardTitle { margin: 0 0 10px; color: #ffffff; font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+.chartArea { flex: 1; min-height: 190px; }
+.tooltip { display: flex; flex-direction: column; gap: 4px; padding: 8px 10px; background: #1e1e1e; border: 1px solid #333333; border-radius: 7px; color: #ffffff; font-size: 12px; }
+.tooltip span { color: #e8440a; }
+.tableCard { flex: 1; min-height: 0; padding: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.tableWrap { overflow: auto; min-height: 0; }
+.table { width: 100%; min-width: 760px; border-collapse: collapse; }
+.table th, .table td { padding: 13px 14px; border-bottom: 1px solid #252525; text-align: left; font-size: 13px; }
+.table th { color: #666666; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.table td { color: #d7d7d7; }
+.nameCell, .money { color: #ffffff; font-weight: 800; }
+.growth { color: #49c147; font-weight: 800; }
+@media (max-width: 980px) { .statsGrid, .chartsGrid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) { .topBar, .statsGrid, .chartsGrid { grid-template-columns: 1fr; align-items: stretch; flex-direction: column; } }
