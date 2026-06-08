@@ -1,0 +1,33 @@
+.page { display: flex; flex-direction: column; height: 100%; gap: 14px; overflow: hidden; background: #0e0e0e; }
+.topBar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.pageHeading { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #ffffff; }
+.pageSubtext { margin: 6px 0 0; color: #888888; font-size: 12px; }
+.primaryBtn { height: 38px; padding: 0 18px; border: none; border-radius: 7px; background: #e8440a; color: #ffffff; font-weight: 800; cursor: pointer; }
+.primaryBtn:hover { background: #ff571a; }
+.chartCard, .tableCard { background: #1a1a1a; border: 1px solid #252525; border-radius: 10px; }
+.chartCard { min-height: 245px; padding: 14px; display: flex; flex-direction: column; }
+.chartHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cardTitle { margin: 0 0 10px; color: #ffffff; font-family: 'Cormorant Garamond', serif; font-size: 18px; }
+.chartMeta { color: #e8440a; font-size: 12px; font-weight: 800; }
+.chartArea { flex: 1; min-height: 190px; }
+.tooltip { display: flex; flex-direction: column; gap: 4px; padding: 8px 10px; background: #1e1e1e; border: 1px solid #333333; border-radius: 7px; color: #ffffff; font-size: 12px; }
+.tooltip span { color: #e8440a; }
+.tableCard { flex: 1; min-height: 0; padding: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.tableWrap { overflow: auto; min-height: 0; }
+.table { width: 100%; min-width: 920px; border-collapse: collapse; }
+.table th, .table td { padding: 13px 14px; border-bottom: 1px solid #252525; text-align: left; font-size: 13px; }
+.table th { color: #666666; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.table td { color: #d7d7d7; }
+.nameCell, .money { color: #ffffff; font-weight: 800; }
+.muted { color: #888888; }
+.statusBadge { display: inline-flex; min-width: 82px; justify-content: center; padding: 4px 10px; border-radius: 999px; font-size: 10px; font-weight: 800; }
+.active { background: rgba(73, 193, 71, 0.15); color: #49c147; }
+.completed { background: rgba(136, 136, 136, 0.14); color: #aaaaaa; }
+.scheduled { background: rgba(232, 68, 10, 0.16); color: #e8440a; }
+.meter { width: 100%; min-width: 100px; height: 8px; overflow: hidden; border-radius: 999px; background: #252525; }
+.meter span { display: block; height: 100%; border-radius: inherit; background: #e8440a; }
+.score86 { width: 86%; }
+.score74 { width: 74%; }
+.score64 { width: 64%; }
+.score52 { width: 52%; }
+@media (max-width: 720px) { .topBar { align-items: stretch; flex-direction: column; } }
